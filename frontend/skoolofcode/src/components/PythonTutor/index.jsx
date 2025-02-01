@@ -220,7 +220,7 @@ const PythonTutor = () => {
               }`}
             >
               <div
-                className={`max-w-[80%] rounded-lg p-4 ${
+                className={`max-w-[80%] rounded-lg p-3 mt-3 ${
                   msg.role === "user" ? "bg-purple-100" : "bg-white"
                 }`}
               >
@@ -240,7 +240,7 @@ const PythonTutor = () => {
                         handleCopy={handleCopy}
                       />
                     )}
-                    <div className="mt-2 ml-1 flex items-center justify-between">
+                    <div className="mt-3 ml-1 flex items-center justify-between">
                       <div className="flex gap-3">
                         <button
                           onClick={() => fillLikeColor(idx)}

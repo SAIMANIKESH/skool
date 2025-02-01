@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
-const GEMINI_API_KEY = "AIzaSyD_QBdkxRwCSsMbhJfh-b7izo_TMtrHm9Q";
+const GEMINI_API_KEY = process.env.API_KEY;
 
 app.post("/chat", async (req, res) => {
   const { message, conversation, apiKey } = req.body;
