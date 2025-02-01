@@ -82,8 +82,8 @@ const PythonTutor = () => {
 
   const handleSendMessage = async () => {
     if (!message.trim()) return;
-    document.title =
-      message[0].toUpperCase() + message.slice(1, message.length);
+    // document.title =
+    //   message[0].toUpperCase() + message.slice(1, message.length);
     setLoading(true);
     const newConversation = [
       ...conversation,
