@@ -2,11 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend for AI-powered Python tutor using Google Gemini API",
-  "main": "api/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node api/index.js",
-    "dev": "nodemon api/index.js",
-    "build": "echo \"No build step required\" && exit 0"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "axios": "1.6.7",
