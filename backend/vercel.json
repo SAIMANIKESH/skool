@@ -2,11 +2,7 @@
   "version": 2,
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-<<<<<<< HEAD
   "framework": null,
-=======
-  "outputDirectory": "public",
->>>>>>> Created an AI-powered Python tutor designed to help children learn basic Python coding
   "functions": {
     "api/**/*.js": {
       "memory": 1024,
