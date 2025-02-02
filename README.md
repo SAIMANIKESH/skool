@@ -12,7 +12,7 @@
 
 ### **Technologies Used**
 
-ReactJS, Tailwind CSS, Lucide-React, API Integration (Gemini), Node.js, Express.js, Axios, Cors, React Router
+- ReactJS, Tailwind CSS, Lucide-React, API Integration (Gemini), Node.js, Express.js, Axios, Cors, React Router
 
 ### **Key Features**
 
@@ -30,6 +30,6 @@ ReactJS, Tailwind CSS, Lucide-React, API Integration (Gemini), Node.js, Express.
 
 Sincerely
 <br/>
-**`Saimanikesh`**
+**Saimanikesh**
 <br />
 Thank you :)
