@@ -92,9 +92,6 @@ const PythonTutor = () => {
     setConversation(newConversation);
     setMessage("");
 
-    // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-    // console.log(backendUrl);
-
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/chat`,
