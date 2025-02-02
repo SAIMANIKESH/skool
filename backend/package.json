@@ -4,8 +4,8 @@
   "description": "Backend for AI-powered Python tutor using Google Gemini API",
   "main": "api/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js",
     "build": "echo \"No build step required\" && exit 0"
   },
   "dependencies": {
@@ -18,7 +18,7 @@
     "nodemon": "3.0.3"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "keywords": [
     "nodejs",
