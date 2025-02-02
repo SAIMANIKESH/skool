@@ -93,11 +93,14 @@ const PythonTutor = () => {
     setMessage("");
 
     try {
-      const response = await axios.post("http://localhost:5000/chat", {
-        apiKey,
-        message,
-        conversation,
-      });
+      const response = await axios.post(
+        `${import.meta.env.BACKEND_BASE_URL}/chat`,
+        {
+          apiKey,
+          message,
+          conversation,
+        }
+      );
 
       const code = extractCodeFromResponse(response.data.response);
 
