@@ -6,7 +6,7 @@
 
 ### **AI Python Tutor**
 
-- Deployed App Link - [Click Here](https://skoolofcode.netlify.app)
+- Deployed App Link - [Click Here](https://pythongpt.netlify.app)
 - Git Repository Link - [Click Here](https://github.com/SAIMANIKESH/skool)
 - Sample Output (Drive Video) - [Click Here](https://drive.google.com/file/d/1D6LM1TJaGnVucajd6Iv2jRDZAQiNEF7s/view)
 
