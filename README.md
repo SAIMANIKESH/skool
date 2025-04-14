@@ -1,4 +1,4 @@
-# `# SkoolOfCode Assignment`
+# `# AI Python GPT`
 
 ### **Description**
 
