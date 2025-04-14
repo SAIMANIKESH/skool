@@ -14,7 +14,7 @@ const GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1";
 const GEMINI_API_KEY = process.env.API_KEY;
 
 // 🔥 Default fallback model (update if you want)
-const DEFAULT_MODEL = "gemini-1.5-pro-latest";
+const DEFAULT_MODEL = "gemini-pro";
 
 // Health Check Route
 app.get("/", (req, res) => {
