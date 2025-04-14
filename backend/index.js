@@ -13,8 +13,9 @@ app.get("/", (req, res) => {
   res.send("Running Python Tutor Backend :)");
 });
 
+// 🔥 UPDATED GEMINI API URL to v1
 const GEMINI_API_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent";
 const GEMINI_API_KEY = process.env.API_KEY;
 
 app.post("/chat", async (req, res) => {
@@ -24,21 +25,29 @@ app.post("/chat", async (req, res) => {
   if (!finalApiKey) {
     return res.status(400).json({ error: "API key is required." });
   }
-  if (!message || !conversation) {
-    return res
-      .status(400)
-      .json({ error: "Message and conversation history are required." });
+  if (!message) {
+    return res.status(400).json({ error: "Message is required." });
   }
 
   try {
     const response = await axios.post(`${GEMINI_API_URL}?key=${finalApiKey}`, {
-      contents: [{ role: "user", parts: [{ text: message }] }],
+      contents: [
+        {
+          parts: [{ text: message }],
+        },
+      ],
     });
 
-    res.json({ response: response.data.candidates[0].content.parts[0].text });
+    const modelResponse =
+      response.data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "No response received.";
+
+    res.json({ response: modelResponse });
   } catch (error) {
     console.error("Gemini API Error:", error.response?.data || error.message);
-    res.status(500).json({ error: error.response?.data.error.message });
+    res
+      .status(500)
+      .json({ error: error.response?.data?.error?.message || "Internal Server Error" });
   }
 });
 
