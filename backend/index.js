@@ -9,18 +9,39 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// ✨ Base Gemini API URL
+const GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1";
+const GEMINI_API_KEY = process.env.API_KEY;
+
+// 🔥 Default fallback model (update if you want)
+const DEFAULT_MODEL = "gemini-1.5-pro-latest";
+
+// Health Check Route
 app.get("/", (req, res) => {
   res.send("Running Python Tutor Backend :)");
 });
 
-// 🔥 UPDATED GEMINI API URL to v1
-const GEMINI_API_URL =
-  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent";
-const GEMINI_API_KEY = process.env.API_KEY;
+// 🛠️ Fetch available models
+app.get("/models", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `${GEMINI_API_BASE_URL}/models?key=${GEMINI_API_KEY}`
+    );
+    const models = response.data.models || [];
+    res.json(models);
+  } catch (error) {
+    console.error("Error fetching models:", error.response?.data || error.message);
+    res
+      .status(500)
+      .json({ error: error.response?.data?.error?.message || "Failed to fetch models." });
+  }
+});
 
+// 🚀 Chat Route using selected model
 app.post("/chat", async (req, res) => {
-  const { message, conversation, apiKey } = req.body;
-  const finalApiKey = apiKey || GEMINI_API_KEY; // Provided key or fallback to environment key
+  const { message, model, apiKey } = req.body;
+  const finalApiKey = apiKey || GEMINI_API_KEY;
+  const selectedModel = model || DEFAULT_MODEL;
 
   if (!finalApiKey) {
     return res.status(400).json({ error: "API key is required." });
@@ -30,13 +51,16 @@ app.post("/chat", async (req, res) => {
   }
 
   try {
-    const response = await axios.post(`${GEMINI_API_URL}?key=${finalApiKey}`, {
-      contents: [
-        {
-          parts: [{ text: message }],
-        },
-      ],
-    });
+    const response = await axios.post(
+      `${GEMINI_API_BASE_URL}/models/${selectedModel}:generateContent?key=${finalApiKey}`,
+      {
+        contents: [
+          {
+            parts: [{ text: message }],
+          },
+        ],
+      }
+    );
 
     const modelResponse =
       response.data?.candidates?.[0]?.content?.parts?.[0]?.text ||
